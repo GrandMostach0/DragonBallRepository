@@ -1,4 +1,4 @@
-import { LinkedInIc, GithubIc } from "../assets/Icons/SunIc"
+import { LinkedInIc, GithubIc, PortafolioWeb } from "../assets/Icons/SunIc"
 export default function FooterDiv() {
     return (
         <footer className="border-t border-t-gray-100 bg-slate-50/20 dark:bg-slate-900/20 py-2 mt-30 text-xs sm:text-sm grid px-3 sm:px-10 dark:text-slate-50">
@@ -10,6 +10,7 @@ export default function FooterDiv() {
 
                 <section>
                     <h1 className="font-semibold mb-1">Mis redes Sociales</h1>
+                    <a className="inline-block mx-2" href="https://victorchan.netlify.app/" target="_blank"><PortafolioWeb /></a>
                     <a className="inline-block mx-2" href="https://github.com/GrandMostach0" target="_blank"><GithubIc /></a>
                     <a className="inline-block mx-2" href="https://www.linkedin.com/in/victorchanvarguez/" target="_blank"><LinkedInIc /></a>
                 </section>
@@ -17,7 +18,7 @@ export default function FooterDiv() {
 
             <section className="border-t border-t-gray-100/50 flex items-center justify-between py-2">
                 <p>© Todos los derechos reservados.</p>
-                <p>Victor Bernardo Chan Varguez</p>
+                <a href="https://victorchan.netlify.app/" target="_blank" className="hover:underline">Victor Bernardo Chan Varguez</a> 
             </section>
         </footer>
     )

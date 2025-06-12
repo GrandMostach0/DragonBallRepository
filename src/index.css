@@ -65,3 +65,11 @@ body::before{
 
 
 }
+
+.tagVertical p {
+    background-color: black;
+    writing-mode: vertical-rl; /* Texto vertical, letras apiladas */
+    text-orientation: mixed;  /* Mantiene la orientación natural de las letras */
+    margin: 0;                /* Elimina márgenes por defecto */
+    letter-spacing: 2px;      /* Espaciado opcional entre letras */
+}
