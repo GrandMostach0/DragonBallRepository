@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import DescriptionCharacter from './components/DescriptionCharacter'
 import Loader from './components/Loader'
 import FooterDiv from './components/FooterDiv'
-import { motion } from "framer-motion";
+import { color, motion } from "framer-motion";
 
 function App() {
 
@@ -79,12 +79,6 @@ function App() {
     });
   };
 
-  const backgroundStyle = {
-    background: coloresDominantes.length > 0 
-      ? `linear-gradient(135deg, ${coloresDominantes.join(', ')})`
-      : 'bg-blue-50',
-  };
-
   return (
     <div className='h-auto relative overflow-y-hidden overflow-x-hidden md:overflow-y-hidden bg-slate-50/25'>
 
@@ -130,6 +124,7 @@ function App() {
                 name={personaje.name}
                 image={personaje.image}
                 description={personaje.description}
+                coloresDominantesProps={coloresDominantes}
               />
             </section>
           </main>
