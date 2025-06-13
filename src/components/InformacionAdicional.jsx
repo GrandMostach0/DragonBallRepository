@@ -28,7 +28,7 @@ export const InfoTransformaciones = ({ evoluciones }) => {
                 <div
                     key={index}
                     className="cursor-pointer hover:scale-110">
-                    <img src={trans.image} alt="" className="w-[60px] h-[60px] object-contain bg-gray-200 dark:bg-black rounded-full px-2 py-1 m-auto"/>
+                    <img loading="lazy" src={trans.image} alt="" className="w-[60px] h-[60px] object-contain bg-gray-200 dark:bg-black rounded-full px-2 py-1 m-auto"/>
                     <p className="text-sm">{trans.name}</p>
                 </div>
             ))}

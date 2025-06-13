@@ -23,6 +23,7 @@
 
 body{
     font-family: 'Raleway', sans-serif;
+    will-change: auto;
     transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
@@ -48,7 +49,7 @@ body::before{
     }
 
     .circle{
-        @apply w-[50%] h-[80%] border rounded-full absolute -z-5 blur-[120px] opacity-80;
+        @apply w-[50%] h-[80%] border rounded-full absolute -z-5 blur-[120px] opacity-80 will-change-auto;
     }
 
     .c1{

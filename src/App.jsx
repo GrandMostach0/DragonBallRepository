@@ -45,15 +45,15 @@ function App() {
       img.onload = () => {
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
-        const scale = 0.1;
+        const scale = 0.05; // Más pequeño que 0.1 para menos datos
         canvas.width = img.width * scale;
         canvas.height = img.height * scale;
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
         const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-        const colorCount = {};
-        const step = 4 * 5;
+        const colorCount = new Map();
 
+        const step = 4 * 10; // Saltar más pixeles para menos análisis
         for (let i = 0; i < imageData.length; i += step) {
           const r = imageData[i];
           const g = imageData[i + 1];
@@ -61,14 +61,21 @@ function App() {
           const a = imageData[i + 3];
           if (a < 128) continue;
 
-          const key = `${r},${g},${b}`;
-          colorCount[key] = (colorCount[key] || 0) + 1;
+          // Crear clave numérica para evitar string y mejorar velocidad
+          const key = (r << 16) + (g << 8) + b;
+          colorCount.set(key, (colorCount.get(key) || 0) + 1);
         }
 
-        const sortedColors = Object.entries(colorCount)
+        // Ordenar y mapear a rgb strings
+        const sortedColors = [...colorCount.entries()]
           .sort((a, b) => b[1] - a[1])
           .slice(0, 3)
-          .map(([rgb]) => `rgb(${rgb})`);
+          .map(([key]) => {
+            const r = (key >> 16) & 255;
+            const g = (key >> 8) & 255;
+            const b = key & 255;
+            return `rgb(${r},${g},${b})`;
+          });
 
         resolve(sortedColors.length ? sortedColors : ["#4F46E5", "#10B981", "#22D3EE"]);
       };
@@ -78,6 +85,11 @@ function App() {
       };
     });
   };
+
+  const item = {
+    hidden: {opacity: 0, y:30 },
+    visible: {opacity: 1, y:0 }
+  }
 
   return (
     <div className='h-auto relative overflow-y-hidden overflow-x-hidden md:overflow-y-hidden bg-slate-50/25'>
@@ -99,15 +111,22 @@ function App() {
       ) : (
         <motion.div
           className="block mt-[5%]"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity:0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                when: "beforeChildren",
+                staggerChildren: 0.1,
+              }
+            }
+          }}
         >
           <main className='flex flex-col sm:flex-row justify-items-center px-4 sm:gap-10 w-full sm:px-10'>
             <motion.section
-              initial={{ x: -30, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.5 }}
+              variants={ item }
               className='flex-1/2 md:flex-1/3 lg:flex-1/12'>
               <Character
                 name={personaje.name}
@@ -119,14 +138,17 @@ function App() {
                 transformaciones={personaje.transformations}
               />
             </motion.section>
-            <section className='flex-2/3'>
+
+            <motion.section
+              variants={ item }
+              className='flex-2/3'>
               <DescriptionCharacter
                 name={personaje.name}
                 image={personaje.image}
                 description={personaje.description}
                 coloresDominantesProps={coloresDominantes}
               />
-            </section>
+            </motion.section>
           </main>
         </motion.div>
       )}
