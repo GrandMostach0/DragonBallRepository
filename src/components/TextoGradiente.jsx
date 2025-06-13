@@ -1,14 +1,8 @@
-import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 export function TextoConGradiente({ texto, colores }) {
 
   const text = texto;
-
-  const letterAnimation = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
 
   //validacion para saber si obtengo todos los 3 colores
   const coloresValidos = Array.isArray(colores) && colores.length >= 3 ? colores : ["#6dd5ed", "#2193b0", "#f7797d"];
@@ -18,18 +12,18 @@ export function TextoConGradiente({ texto, colores }) {
     <div className="inline-block md:block">
 
       <h1
-        key={texto}
+        key={text}
         className="inline-block bg-clip-text text-transparent text-4xl font-extrabold md:text-5xl lg:text-7xl"
-        aria-label={texto}
+        aria-label={text}
         style={{backgroundImage: gradiente}}
         >
-          {texto.split("").map((char, index) => (
+          {text.split("").map((char, index) => (
             <motion.span
               key={`${char}-${index}`}
-              initial="hidden"
-              animate="visible"
-              variants={letterAnimation}
-              transition={{ delay: index * 0.1, duration: 0.5 }} // Ajusta el delay para velocidad
+              initial = {{ opacity:0, y:0 }}
+              whileInView={{ opacity:1, y:0 }}
+              viewport={{ once: true, amount:0.6 }}
+              transition={{ delay: index * 0.2, duration: 0.6 }}
             >
               {char}
             </motion.span>

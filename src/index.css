@@ -39,6 +39,11 @@ body::before{
     pointer-events: none;
 }
 
+.circle {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
 @layer components{
     .tag {
         @apply inline-block px-2 sm:px-4 sm:py-1 text-xs md:font-semibold border rounded-lg cursor-default dark:text-slate-50 text-slate-900;
@@ -49,7 +54,7 @@ body::before{
     }
 
     .circle{
-        @apply w-[50%] h-[80%] border rounded-full absolute -z-5 blur-[120px] opacity-80 will-change-auto;
+        @apply w-[50%] h-[80%] border rounded-full absolute -z-5 blur-3xl opacity-60;
     }
 
     .c1{
@@ -57,20 +62,11 @@ body::before{
     }
 
     .c2{
-        @apply top-0 left-[30%];
+        @apply -top-20 left-[22%];
     }
 
     .c3{
-        @apply -left-[20%] -bottom-[10%];
+        @apply -left-[20%] -bottom-[5%];
     }
 
-
-}
-
-.tagVertical p {
-    background-color: black;
-    writing-mode: vertical-rl; /* Texto vertical, letras apiladas */
-    text-orientation: mixed;  /* Mantiene la orientación natural de las letras */
-    margin: 0;                /* Elimina márgenes por defecto */
-    letter-spacing: 2px;      /* Espaciado opcional entre letras */
 }

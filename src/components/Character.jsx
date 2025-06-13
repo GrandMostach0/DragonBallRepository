@@ -27,7 +27,7 @@ export function Character({
     }
 
     return(
-        <div className="text-center text-slate-950 dark:text-slate-50">
+        <div className="text-center text-slate-950 dark:text-slate-50 mb-10">
             <div className="flex items-center gap-5 justify-center py-2">
                 <p className="tag">{afilacion}</p>
                 <p className="tag">{raza}</p>

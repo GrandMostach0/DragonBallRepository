@@ -28,7 +28,7 @@ function NavBar({ funcion }) {
     }
 
     return (
-        <div className="flex flex-col xs:flex-row items-center justify-between py-2 px-5 sm:px-10 md:px-10 sticky text-black dark:text-white w-[100%] top-0 left-0 bg-transparent backdrop-blur-[5px]">
+        <div className="flex flex-col xs:flex-row items-center justify-between py-2 px-5 sm:px-10 md:px-10 sticky text-black dark:text-white w-[100%] top-0 left-0 bg-transparent backdrop-blur-[2px]">
             <motion.div
                 initial={{ opacity: 0, y: -20, filter: "blur(4px)" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}

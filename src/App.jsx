@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import DescriptionCharacter from './components/DescriptionCharacter'
 import Loader from './components/Loader'
 import FooterDiv from './components/FooterDiv'
-import { color, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 function App() {
 
@@ -94,15 +94,17 @@ function App() {
   return (
     <div className='h-auto relative overflow-y-hidden overflow-x-hidden md:overflow-y-hidden bg-slate-50/25'>
 
-      <div
-        className='circle c1'
-        style={{background: coloresDominantes[0] || "#4F46E5"}}></div>
-      <div
-        className='circle c2'
-        style={{background: coloresDominantes[1] || "#10B981"}}></div>
-      <div 
-        className='circle c3'
-        style={{background: coloresDominantes[2] || "#22D3EE"}}></div>
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        {coloresDominantes[0] && (
+          <div className="circle c1" style={{ background: coloresDominantes[0] }} />
+        )}
+        {coloresDominantes[1] && (
+          <div className="circle c2" style={{ background: coloresDominantes[1] }} />
+        )}
+        {coloresDominantes[2] && (
+          <div className="circle c3" style={{ background: coloresDominantes[2] }} />
+        )}
+      </div>
 
       <NavBar funcion={ fetchPersonajeById }/>
 
@@ -119,7 +121,7 @@ function App() {
               opacity: 1,
               transition: {
                 when: "beforeChildren",
-                staggerChildren: 0.1,
+                staggerChildren: 0.3,
               }
             }
           }}
