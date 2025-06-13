@@ -43,7 +43,7 @@ export function Character({
                 key={image} // importante para reiniciar animación si la imagen cambia
                 src={image}
                 alt={name}
-                className="w-[150px] h-[270px] lg:w-[35%] md:h-[auto] m-auto object-contain"
+                className="w-[100%] h-[400px] lg:w-[35%] md:h-[auto] m-auto object-contain"
                 animate={loading ? { opacity: [0.2, 1, 0.2] } : { opacity: 1 }}
                 loading="lazy"
                 transition={loading ? { duration: 1, repeat: Infinity } : { duration: 0.3 }}

@@ -31,7 +31,7 @@ export default function Buscardor({ onSelectCharacter }){
                 <motion.input
                     type="text"
                     placeholder="Ingresar nombre"
-                    className="placeholder:text-black dark:placeholder:text-white border-none rounded-lg px-2 sm:px-4 py-1 outline-0"
+                    className="text-[16px]placeholder:text-black dark:placeholder:text-white border-none rounded-lg px-2 sm:px-4 py-1 outline-0"
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.3 }}
