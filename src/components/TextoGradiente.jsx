@@ -15,7 +15,7 @@ export function TextoConGradiente({ texto, colores }) {
         key={text}
         className="inline-block bg-clip-text text-transparent text-4xl font-extrabold md:text-5xl lg:text-7xl"
         aria-label={text}
-        style={{backgroundImage: gradiente, WebkitTextStroke: `2px rgba(0, 0, 0, 0.3)`}}>
+        style={{backgroundImage: gradiente, WebkitTextStroke: `1px rgba(0, 0, 0, 0.2)`}}>
         {text.split("").map((char, index) => (
           <motion.span
             key={`${char}-${index}`}
