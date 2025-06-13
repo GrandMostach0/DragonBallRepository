@@ -46,11 +46,11 @@ body::before{
 
 @layer components{
     .tag {
-        @apply inline-block px-2 sm:px-4 sm:py-1 text-xs md:font-semibold border rounded-lg cursor-default dark:text-slate-50 text-slate-900;
+        @apply inline-block px-2 sm:px-4 sm:py-1 text-xs md:font-semibold border rounded-lg cursor-default dark:text-slate-50 text-slate-900 hover:scale-105;
     }
 
     .subOpciones {
-        @apply inline-block text-xs sm:text-sm md:text-base px-4 mx-2 rounded-lg cursor-pointer;
+        @apply inline-block text-xs sm:text-sm px-2 py-1 mx-2 rounded-lg cursor-pointer;
     }
 
     .circle{

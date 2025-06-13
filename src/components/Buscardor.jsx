@@ -27,11 +27,11 @@ export default function Buscardor({ onSelectCharacter }){
 
     return (
         <div className="relative">
-            <div className="flex items-center text-xs sm:text-base gap-2 border-none rounded-lg px-2 sm:px-4 py-1 bg-slate-900/50 dark:bg-slate-100/50 text-white dark:text-black">
+            <div className="flex items-center text-sm sm:text-base gap-2 border border-black dark:border-white rounded-lg px-2 sm:px-4 py-1 ">
                 <motion.input
                     type="text"
                     placeholder="Ingresar nombre"
-                    className="placeholder:text-white dark:placeholder:text-black border-none rounded-lg px-2 sm:px-4 py-1 outline-0"
+                    className="placeholder:text-black dark:placeholder:text-white border-none rounded-lg px-2 sm:px-4 py-1 outline-0"
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.3 }}
@@ -43,17 +43,17 @@ export default function Buscardor({ onSelectCharacter }){
 
             {sugerencias.length > 0 && (
                 <div
-                    className="absolute mt-1 px-4 py-2 rounded-lg shadow-xl bg-slate-900/90 dark:bg-slate-100/90 text-white dark:text-black">
+                    className="absolute mt-1 w-[100%] rounded-lg shadow-xl bg-slate-00 bg-slate-800 dark:bg-slate-100/90 text-white dark:text-black">
                     <motion.ul
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3 }}
+                        initial={{ opacity: 0, y:5 }}
+                        animate={{ opacity: 1, y:0 }}
+                        transition={{ duration: 0.4 }}
                     >
                         {sugerencias.map((personaje) => (
                             <motion.li 
                                 whileHover={{ scale: 1.05 }}
                                 key={personaje.id}
-                                className="cursor-pointer"
+                                className="cursor-pointer px-4 my-1"
                                 onClick={() => {
                                     onSelectCharacter(personaje.id);
                                     setSolicitud('');

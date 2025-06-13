@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 function App() {
 
-  const [personaje, setPersonaje] = useState([]);
+  const [personaje, setPersonaje] = useState(null);
   const [coloresDominantes, setColoresDominantes] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -19,12 +19,11 @@ function App() {
     try {
       const response = await fetch(`https://dragonball-api.com/api/characters/${id}`);
       const data = await response.json();
+      const colores = data.image ? await extraerColoresDominantes(data.image) : ["#4F46E5", "#10B981", "#22D3EE"];
+      console.log(data)
+
       setPersonaje(data);
-      console.log(data);
-      if(data.image) {
-        const colores = await extraerColoresDominantes(data.image);
-        setColoresDominantes(colores);
-      }
+      setColoresDominantes(colores);
     } catch (error) {
       console.log("Error fetching data: ", error);
     } finally {
@@ -45,7 +44,7 @@ function App() {
       img.onload = () => {
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
-        const scale = 0.05; // Más pequeño que 0.1 para menos datos
+        const scale = 0.10;
         canvas.width = img.width * scale;
         canvas.height = img.height * scale;
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
@@ -108,7 +107,7 @@ function App() {
 
       <NavBar funcion={ fetchPersonajeById }/>
 
-      {loading ? (
+      {!personaje ? (
         <Loader />
       ) : (
         <motion.div
@@ -127,6 +126,7 @@ function App() {
           }}
         >
           <main className='flex flex-col sm:flex-row justify-items-center px-4 sm:gap-10 w-full sm:px-10'>
+
             <motion.section
               variants={ item }
               className='flex-1/2 md:flex-1/3 lg:flex-1/12'>
@@ -138,6 +138,8 @@ function App() {
                 poder={personaje.ki}
                 genero={personaje.gender}
                 transformaciones={personaje.transformations}
+                planetaOrigen={personaje.originPlanet}
+                loading={loading}
               />
             </motion.section>
 

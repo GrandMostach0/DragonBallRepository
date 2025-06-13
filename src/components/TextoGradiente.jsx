@@ -15,20 +15,19 @@ export function TextoConGradiente({ texto, colores }) {
         key={text}
         className="inline-block bg-clip-text text-transparent text-4xl font-extrabold md:text-5xl lg:text-7xl"
         aria-label={text}
-        style={{backgroundImage: gradiente}}
-        >
-          {text.split("").map((char, index) => (
-            <motion.span
-              key={`${char}-${index}`}
-              initial = {{ opacity:0, y:0 }}
-              whileInView={{ opacity:1, y:0 }}
-              viewport={{ once: true, amount:0.6 }}
-              transition={{ delay: index * 0.2, duration: 0.6 }}
-            >
-              {char}
-            </motion.span>
-          ))}
-        </h1>
+        style={{backgroundImage: gradiente, WebkitTextStroke: `2px rgba(0, 0, 0, 0.3)`}}>
+        {text.split("").map((char, index) => (
+          <motion.span
+            key={`${char}-${index}`}
+            initial = {{ opacity:0, y:10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 1 }}
+            transition={{ delay: index * 0.2, duration: 0.6 }}
+          >
+            {char}
+          </motion.span>
+        ))}
+      </h1>
     </div>
   );
 }

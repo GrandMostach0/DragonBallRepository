@@ -9,6 +9,11 @@ export default function FooterDiv() {
                 </section>
 
                 <section>
+                    <h1 className="font-semibold text-red-500 mb-1"> ** Dragon Ball **</h1>
+                    <p>La cantidad de Personajes e Información depende de  <span className="font-semibold underline text-amber-500">Api de <a href="https://web.dragonball-api.com/" target="_blank">Dragon Ball Api</a></span></p>
+                </section>
+
+                <section>
                     <h1 className="font-semibold mb-1">Mis redes Sociales</h1>
                     <a className="inline-block mx-2" href="https://victorchan.netlify.app/" target="_blank"><PortafolioWeb /></a>
                     <a className="inline-block mx-2" href="https://github.com/GrandMostach0" target="_blank"><GithubIc /></a>
@@ -17,7 +22,7 @@ export default function FooterDiv() {
             </div>
 
             <section className="border-t border-t-gray-100/50 flex items-center justify-between py-2">
-                <p>© Todos los derechos reservados.</p>
+                <p>© Todos los derechos reservados - Version: 1.0</p>
                 <a href="https://victorchan.netlify.app/" target="_blank" className="hover:underline">Victor Bernardo Chan Varguez</a> 
             </section>
         </footer>
